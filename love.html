@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Cutie 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #fff0f5, #ffe6f0);
+      font-family: 'Dancing Script', cursive;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #d81b60;
+      position: relative;
+      opacity: 0;
+      animation: fadeInBody 1.5s ease-in forwards;
+      border: 5px solid #f8bbd0;
+      box-shadow: 0 0 20px #f48fb1;
+    }
+
+    @keyframes fadeInBody {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #d81b60;
+      animation: typing 4s steps(30, end), blink 0.75s step-end infinite;
+      width: 100%;
+      max-width: 90vw;
+      text-align: center;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #d81b60; }
+    }
+
+    .love-message {
+      margin-top: 2rem;
+      font-size: 1.8rem;
+      max-width: 90%;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    .love-line {
+      opacity: 0;
+      animation: fadeInLine 1s ease-in forwards;
+    }
+
+    .love-line:nth-child(1) { animation-delay: 0s; }
+    .love-line:nth-child(2) { animation-delay: 1s; }
+    .love-line:nth-child(3) { animation-delay: 2s; }
+    .love-line:nth-child(4) { animation-delay: 3s; }
+    .love-line:nth-child(5) { animation-delay: 4s; }
+    .love-line:nth-child(6) { animation-delay: 5s; }
+
+    @keyframes fadeInLine {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hand-img {
+      margin-top: 40px;
+      width: 180px;
+      animation: fadeInHand 1s ease-in 6s forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInHand {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .back-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 12px;
+      background-color: #f06292;
+      color: white;
+      cursor: pointer;
+      font-family: 'Dancing Script', cursive;
+      transition: background 0.3s;
+      animation: fadeInHand 1s ease-in 7s forwards;
+      opacity: 0;
+    }
+
+    .back-btn:hover {
+      background-color: #e91e63;
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 1.5rem;
+      animation: fall 10s linear infinite;
+      color: #ff80ab;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Why I adore you, cutie 💖</h1>
+
+  <div class="love-message">
+    <div class="love-line">Your smile is like sunshine on my cloudy days.</div>
+    <div class="love-line">Your kindness is like warm tea on cold mornings.</div>
+    <div class="love-line">The way you talk, the way you care, the way you just exist — it’s magical.</div>
+    <div class="love-line">There isn’t one single thing I adore about you... it’s everything, cutie 💫</div>
+    <div class="love-line">So please don’t be tensed or sad, because I’m always with you — heart to heart. 💕</div>
+    <div class="love-line"><strong>I’m waiting for you 🤝</strong></div>
+  </div>
+
+  <img src="hand.png" alt="Hand Forward" class="hand-img" />
+
+  <button class="back-btn" onclick="goBackWithTransition()">⬅️ Back to Welcome</button>
+
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Floating hearts
+    const heartCount = 30;
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.textContent = '💖';
+      document.body.appendChild(heart);
+    }
+
+    // Fade out transition
+    function goBackWithTransition() {
+      document.body.style.transition = 'opacity 1s ease';
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = 'welcome.html';
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
+

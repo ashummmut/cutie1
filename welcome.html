@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Good Morning Cutie 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: linear-gradient(to bottom right, #fffafc, #ffe4ec);
+      font-family: 'Dancing Script', cursive;
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #d81b60;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+      border: 5px solid #f8bbd0;
+      box-shadow: 0 0 20px #f48fb1;
+      position: relative;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h1 {
+      font-size: 3rem;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #d81b60;
+      animation: typing 4s steps(40, end), blink 0.75s step-end infinite;
+      max-width: 90vw;
+      margin-bottom: 20px;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #d81b60; }
+    }
+
+    .rose-img {
+      width: 160px;
+      animation: fadeInUp 2s ease-in-out 2s forwards;
+      opacity: 0;
+    }
+
+    @keyframes fadeInUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .heart-box {
+      margin-top: 40px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at 30% 30%, #ff80ab, #ec407a);
+      clip-path: path('M60 0 C80 -20 120 20 60 100 C0 20 40 -20 60 0 Z');
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      animation: pulse 2s infinite;
+      transition: transform 0.3s ease;
+    }
+
+    .heart-box:hover {
+      transform: scale(1.1);
+    }
+
+    .heart-box span {
+      font-size: 1.2rem;
+      color: white;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 1.5rem;
+      animation: fall 10s linear infinite;
+      color: #ff80ab;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-50px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Good Morning, Cutie 💖</h1>
+
+  <img src="rose.png" alt="Rose in Hand" class="rose-img" />
+
+  <div class="heart-box" onclick="goToLovePage()">
+    <span>Tap Me 💌</span>
+  </div>
+
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Floating hearts
+    const heartCount = 30;
+    for (let i = 0; i < heartCount; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.textContent = '💖';
+      document.body.appendChild(heart);
+    }
+
+    // Transition to love.html
+    function goToLovePage() {
+      document.body.style.transition = 'opacity 1s ease';
+      document.body.style.opacity = 0;
+      setTimeout(() => {
+        window.location.href = 'love.html';
+      }, 1000);
+    }
+  </script>
+
+</body>
+</html>
+

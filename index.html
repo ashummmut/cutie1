@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Cutie 💖</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #fff0f5, #ffe6f0);
+      font-family: 'Dancing Script', cursive;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #d81b60;
+      overflow: hidden;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    input {
+      padding: 10px 20px;
+      font-size: 1.3rem;
+      border: 2px solid #d81b60;
+      border-radius: 12px;
+      outline: none;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 1.2rem;
+      background-color: #f06292;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #e91e63;
+    }
+
+    .error {
+      color: #c62828;
+      margin-top: 10px;
+      font-size: 1rem;
+      height: 20px;
+    }
+
+    .shake {
+      animation: shake 0.3s;
+    }
+
+    @keyframes shake {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+      100% { transform: translateX(0); }
+    }
+
+    .heart-animation {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 0;
+      width: 120px;
+      transition: all 0.8s ease;
+    }
+
+    .heart-animation.show {
+      transform: translate(-50%, -50%) scale(1.5);
+      opacity: 1;
+    }
+
+    .sparkle {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #f8bbd0, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: sparkleFade 1s linear forwards;
+    }
+
+    @keyframes sparkleFade {
+      0% { opacity: 1; transform: scale(1); }
+      100% { opacity: 0; transform: scale(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hi Cutie 💖</h1>
+  <p>Please enter the secret word to continue:</p>
+
+  <input type="password" id="passwordInput" placeholder="Enter password..." />
+  <button onclick="checkPassword()">Enter</button>
+
+  <div id="errorMessage" class="error"></div>
+
+  <!-- Hidden Heart Animation -->
+  <img src="heart.png" class="heart-animation" id="heartReveal" alt="Love Heart">
+
+  <!-- Welcome Sound -->
+  <audio id="successSound" src="success.mp3" preload="auto"></audio>
+
+  <script>
+    function checkPassword() {
+      const input = document.getElementById('passwordInput');
+      const value = input.value.trim().toLowerCase();
+      const error = document.getElementById('errorMessage');
+      const successSound = document.getElementById('successSound');
+      const heart = document.getElementById('heartReveal');
+
+      if (value === 'cutie') {
+        successSound.play();
+        heart.classList.add('show');
+        error.textContent = '';
+        setTimeout(() => {
+          window.location.href = 'welcome.html';
+        }, 2000);
+      } else {
+        error.textContent = 'Oops! That’s not the right word, cutie 😢';
+        input.classList.add('shake');
+        setTimeout(() => input.classList.remove('shake'), 300);
+      }
+    }
+
+    // Sparkle Trail
+    document.addEventListener('mousemove', (e) => {
+      const sparkle = document.createElement('div');
+      sparkle.classList.add('sparkle');
+      sparkle.style.left = e.pageX + 'px';
+      sparkle.style.top = e.pageY + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 1000);
+    });
+  </script>
+
+</body>
+</html>
